@@ -1,6 +1,6 @@
 package de.ebay.kleinanzeigen.e80_unittests.support;
 
-class TriggeredAnimator implements Animator {
+public class TriggeredAnimator implements Animator {
 
         private Runnable r;
 
