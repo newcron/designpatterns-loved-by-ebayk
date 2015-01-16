@@ -9,11 +9,11 @@ import static java.lang.Long.toHexString;
 public class LoginService {
 
 
+    public static final String EXPECTED_USER = "me@myhost.com";
+    public static final String EXPECTED_PASSWORD_HASHED = toHexString(sha1().hashString("i-am-super-cool", UTF_8).asLong());
+
     public boolean mayLogin(User user) {
-        if (user.getCredentials() == null) {
-            return false;
-        }
-        return "me@myhost.com".equalsIgnoreCase(user.getCredentials().getEmail())
-                && toHexString(sha1().hashString("i-am-super-cool", UTF_8).asLong()).equalsIgnoreCase(user.getCredentials().getHashedPassword());
+        return user.getCredentials().getEmail().equalsIgnoreCase(EXPECTED_USER)
+                && user.getCredentials().getHashedPassword().equalsIgnoreCase(EXPECTED_PASSWORD_HASHED);
     }
 }

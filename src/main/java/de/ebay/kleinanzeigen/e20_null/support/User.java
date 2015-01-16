@@ -2,15 +2,20 @@ package de.ebay.kleinanzeigen.e20_null.support;
 
 import com.google.common.base.Preconditions;
 
+import java.util.Optional;
+
 public class User {
 
     private long userId;
 
     private Credentials credentials;
 
-    private Address address;
+    private Optional<Address> address;
 
-    public User(long userId, Credentials credentials, Address address) {
+    public User(long userId, Credentials credentials, Optional<Address> address) {
+        Preconditions.checkNotNull(credentials);
+        Preconditions.checkNotNull(address);
+
         this.userId = userId;
         this.credentials = credentials;
         this.address = address;
@@ -25,7 +30,7 @@ public class User {
         return credentials;
     }
 
-    public Address getAddress() {
+    public Optional<Address> getAddress() {
         return address;
     }
 
