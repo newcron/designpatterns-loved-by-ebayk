@@ -10,7 +10,6 @@ public class StardateTest  {
     @Test
     public void printsToday() {
         assertThat(new Stardate().currentDate()).isEqualTo("Stardate 11501.13");
-
     }
 
 
