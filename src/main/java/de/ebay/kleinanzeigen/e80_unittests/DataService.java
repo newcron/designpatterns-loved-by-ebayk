@@ -9,8 +9,9 @@ public class DataService {
 
     private volatile Object data;
 
-    private DataService(ApiDataLoader apiDataLoader, Animator animator) {
+    DataService(ApiDataLoader apiDataLoader, Animator animator) {
         dataLoader = apiDataLoader;
+        data = dataLoader.loadDataFromApi();
         animator.start(()->{
             data = dataLoader.loadDataFromApi();
         });
