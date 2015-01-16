@@ -12,4 +12,6 @@ public class StardateTest  {
         assertThat(new Stardate().currentDate()).isEqualTo("Stardate 11501.13");
 
     }
+
+
 }

@@ -3,7 +3,7 @@ package de.ebay.kleinanzeigen.e80_unittests.support;
 import java.util.Timer;
 import java.util.TimerTask;
 
-class FixedIntervalAnimator implements Animator {
+public class FixedIntervalAnimator implements Animator {
     private final long interval, offset;
 
     public FixedIntervalAnimator(long offset, long interval) {
