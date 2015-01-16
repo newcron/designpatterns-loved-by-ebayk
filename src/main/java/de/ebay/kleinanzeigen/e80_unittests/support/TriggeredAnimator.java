@@ -9,7 +9,7 @@ public class TriggeredAnimator implements Animator {
             this.r = r;
         }
 
-        void triggger() {
+        public void triggger() {
             r.run();
         }
     }
