@@ -3,7 +3,7 @@ package de.ebay.kleinanzeigen.e80_unittests;
 import de.ebay.kleinanzeigen.e80_unittests.support.Animator;
 import de.ebay.kleinanzeigen.e80_unittests.support.ApiDataLoader;
 
-public class DataService {
+class DataService {
 
     private final ApiDataLoader dataLoader;
 

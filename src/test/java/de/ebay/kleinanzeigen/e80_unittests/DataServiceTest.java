@@ -2,6 +2,7 @@ package de.ebay.kleinanzeigen.e80_unittests;
 
 import de.ebay.kleinanzeigen.e80_unittests.support.ApiDataLoader;
 import de.ebay.kleinanzeigen.e80_unittests.support.TriggeredAnimator;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -15,17 +16,27 @@ public class DataServiceTest {
 
 
     @Mock
-    private ApiDataLoader dataService;
+    private ApiDataLoader dataLoader;
+    private DataService dataService;
+    private TriggeredAnimator animator;
+
+    @Before
+    public void setUp() {
+        when(dataLoader.loadDataFromApi()).thenReturn("first", "second");
+
+        animator = new TriggeredAnimator();
+
+        dataService = new DataService(dataLoader, animator);
+    }
+
+    @Test
+    public void loadsInitialData() {
+        assertThat(dataService.getData()).isEqualTo("first");
+    }
 
     @Test
     public void reloadsData() {
-        when(dataService.loadDataFromApi()).thenReturn("first", "second");
-        TriggeredAnimator animator = new TriggeredAnimator();
-
-        DataService dataSer = new DataService(dataService, animator);
-
-        assertThat(dataSer.getData()).isEqualTo("first");
-
-        animator.
+        animator.triggger();
+        assertThat(dataService.getData()).isEqualTo("second");
     }
 }

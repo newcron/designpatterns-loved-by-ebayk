@@ -1,14 +1,25 @@
 package de.ebay.kleinanzeigen.e80_unittests;
 
+import de.ebay.kleinanzeigen.e80_unittests.support.Clock;
+import de.ebay.kleinanzeigen.e80_unittests.support.SystemTimeClock;
+
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public class Stardate {
+class Stardate {
 
+    private final Clock clock;
+
+    public Stardate() {
+        this(new SystemTimeClock());
+    }
+
+    Stardate(Clock clock) {
+        this.clock = clock;
+    }
 
     public String currentDate() {
 
-        Calendar now = new GregorianCalendar();
+        Calendar now = clock.now();
 
         int stardateYear = now.get(Calendar.YEAR) - 1900;
         int month = now.get(Calendar.MONTH)+1;
